@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main(){
+	int i,j,k;
+	int arr1[5],arr2[5],arr3[100];
+	printf("enter the 5 elements of 1st array:");
+	for(i=0;i<5;i++){
+		scanf("%d",&arr1[i]);
+	}
+	for(i=0;i<5;i++){
+		arr3[i]=arr1[i];
+	}
+	k=i;
+	printf("enter the 5 elements of 2nd array:");
+	for(i=0;i<5;i++){
+		scanf("%d",&arr2[i]);
+	}
+	for(i=0;i<5;i++){
+		arr3[k]=arr2[i];
+		k++;
+	}
+	
+	for(j=0;j<k;j++){
+		printf("%d ",arr3[j]);
+	}
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main(){
+	int arr[10]={2,4,67,844,7,18,45};
+	int target=18;
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printf("%d",linear(arr,target,n));
+}
+int linear(int a[],int x,int n){
+	int i;
+	for(i=0;i<n;i++){
+	if(a[i]==x){
+		return i;
+	}
+	}
+	return -1;
+}

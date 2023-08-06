@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    int array_elements[] = {10, 20, 30, 40, 50, 60, 70, 80};
+    int array_size = sizeof(array_elements) / sizeof(array_elements[0]);
+    if (array_size >= 5) {
+        int fifth_iterated_element = array_elements[4];
+        printf("Fifth iterated element: %d\n", fifth_iterated_element);
+    } else {
+        printf("The array does not have enough elements to display the fifth iterated element.\n");
+    }
+
+    return 0;
+}

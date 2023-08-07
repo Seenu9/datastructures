@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+}*top,*n;
+void push(int num){
+	n=(struct node*)malloc(sizeof(struct node));
+	n->data=num;
+	n->next=NULL;
+	if(top==NULL){
+		top=n;		
+	}
+	else{
+		n->next=top;
+		top=n;
+	}
+}
+void pop(){
+	struct node *t=top;
+	if(top==NULL){
+        printf("stack is empty");	
+	}
+	else{
+		top=top->next;
+		t->next=NULL;
+		free(t);		
+	}
+}
+void display(){
+	struct node *tp=top;
+	if(top==NULL){
+		printf("stack is empty");
+	}
+	printf("elements:");
+	while(tp!=NULL){
+		printf("\n%d",tp->data);
+		tp=tp->next;
+	}
+}
+void peek(){
+	struct node *tp=top;
+	if(top==NULL){
+		printf("stack is empty");
+	}
+	printf("%d",tp->data);
+}
+int main(){
+	while(1){
+	int ch;
+	printf("\nenter your choice 1.push 2.pop 3.display 4.peek 5.exit:");
+	scanf("%d",&ch);
+	switch(ch){
+		case 1:
+			printf("enter the element to push:");
+			int num1;
+			scanf("%d",&num1);
+			push(num1);
+			printf("Inserted value into stack\n");
+			display();
+			break;
+		case 2:
+			pop();
+			printf("top elemente deleted");
+			display();
+			break;
+		case 3:
+		    display();
+			break;
+		case 4:
+			peek();
+			break;
+		case 5:
+			exit(1);
+			break;
+		default:
+			printf("enter the correct choice:");
+			
+	}
+}
+
+
+return 0;
+}

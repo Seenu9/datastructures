@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_SIZE 10
+
+int front1 = -1, rear1 = -1;
+int front2 = -1, rear2 = -1;
+int array1[MAX_SIZE];
+int array2[MAX_SIZE];
+
+bool isEmpty(int front, int rear) {
+    return front == -1 && rear == -1;
+}
+
+bool isFull(int rear) {
+    return rear == MAX_SIZE - 1;
+}
+
+void enqueue(int data) {
+    if (isFull(rear1)) {
+        printf("Queue is full. Cannot enqueue.\n");
+        return;
+    }
+
+    if (isEmpty(front1, rear1)) {
+        front1 = rear1 = 0;
+    } else {
+        rear1++;
+    }
+
+    array1[rear1] = data;
+    printf("%d enqueued to the queue.\n", data);
+}
+
+int dequeue() {
+    if (isEmpty(front1, rear1)) {
+        printf("Queue is empty. Cannot dequeue.\n");
+        return -1;
+    }
+
+    int data = array1[front1];
+    front1++;
+
+    if (front1 > rear1) {
+        front1 = rear1 = -1;
+    }
+
+    return data;
+}
+
+void display() {
+    if (isEmpty(front1, rear1)) {
+        printf("Queue is empty.\n");
+        return;
+    }
+
+    printf("Queue elements: ");
+    for (int i = front1; i <= rear1; i++) {
+        printf("%d ", array1[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    display();
+
+    printf("Dequeued: %d\n", dequeue());
+    printf("Dequeued: %d\n", dequeue());
+
+    display();
+
+    enqueue(40);
+
+    display();
+
+    return 0;
+}
